@@ -22,7 +22,7 @@ Retrieving Save File
 
 **Deleting a save file will reset the game and remove all scores and progress. Do not click delete.**
 
-**The save file is stored in SD://private/wii/title/RZTE/data.bin. If there is a file already there, change the folder or file name on your laptop (as you should of done if you followed the procedures) to allow for a newer save file to be copied.**
+**The save file is stored in SD://private/wii/title/RZTE/data.bin. If there is a file already there, change the folder or file name on your laptop to allow for a newer save file to be copied.**
 
 Dowload Wii Segher Tools for Tachtig (and more)
 - Create .wii folder in terminal: ``mkdir ~/.wii``
@@ -35,8 +35,8 @@ Dowload Wii Segher Tools for Tachtig (and more)
 - To make it easier, you can copy the tachtig file to a location in your $PATH with ``sudo cp tachtig /usr/local/bin`` or add this code to the ``~/.bash_profile`` file or ``~/.bashrc file`` file: ``export PATH=$PATH:~/wii-inspect`` <- Replace ~/wii-inspect with the result of pwd from last step
 
 Transferring the Save File
-- Insert the SD Card into a laptop or laptop extension
-- Change the `private` folder to today's date and time ``202109071319`` for easy tracking of multiple save files.
+- Insert the SD Card into a laptop or laptop extension and navigate to SD Card folder
+- Change the `private` folder to today's date and time ``202109071319`` for easy tracking of multiple save files. Right click the folder and choose rename.
 - If using WSL or if you would like, copy or move the directory to your laptop and outside the SD Card (like your desktop). 
 - If using WSL, do this ``mv /mnt/C/users/Aaron/Desktop/202109071319 ~/wii-inspect`` <- Change Aaron to your username and make other changes as needed
 
