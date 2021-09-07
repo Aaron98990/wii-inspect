@@ -1,10 +1,16 @@
 #!/bin/bash                                                       
 
-if [[ ! -d 00010000525a5445 ]]; then
-	echo "Running tachtig. Make sure tachtig executable is in your path."
-	tachtig data.bin
-fi
-if [ "$1" == "" ]; then
+# Exits program if first argument is empty
+if [ -z "$1" ]; then
+	echo bash stamps.bash FILE
+	echo FILE should be: Sports2.dat OR data.bin
+	exit 1
+# Exits program if file does not exist.
+elif [ ! -f "$1" ]; then
+	    echo "$1: No such file"
+	    exit 2
+elif [ "$1" == "data.bin" ]; then
+tachtig "$1"
 hex=$(xxd -p -c 1000000 00010000525a5445/Sports2.dat)
 else
 hex=$(xxd -p -c 1000000 $1)
@@ -128,6 +134,5 @@ c9ms=${c9h:3:2}
 printf 'Cycling: %d %s.%02d, %d %s.%02d, %d %s.%02d, %d %s.%02d, %d %s.%02d, %d %s.%02d\n' 0x${hex:33401:2} `secs ${c1s}` ${c1ms} 0x${hex:33409:2} `secs ${c2s}` ${c2ms} 0x${hex:33417:2} `secs ${c3s}` ${c3ms} 0x${hex:33425:2} `secs ${c4s}` ${c4ms} 0x${hex:33433:2} `secs ${c5s}` ${c5ms} 0x${hex:33441:2} `secs ${c6s}` ${c6ms} 
 printf 'Cycling (3a,3b,6): %d %s.%02d, %d %s.%02d, %d %s.%02d\n' 0x${hex:33449:2} `secs ${c7s}` ${c7ms} 0x${hex:33457:2} `secs ${c8s}` ${c8ms} 0x${hex:33465:2} `secs ${c9s}` ${c9ms} 
 printf 'Skydiving: %d\n' 0x${hex:35468:4}
-echo ${hex:18956:47}
 echo -e "${RED}Most ${BLUE}High ${PURPLE}Scores${SET}"
 (IFS=$'\n'; sort <<< "${names[*]}") | uniq -c

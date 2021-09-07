@@ -39,8 +39,9 @@ binToDec() {
 BIN=$(echo "obase=10; ibase=2; $1" | bc )
 echo $BIN
 }
-
+#twos compliment works on four digits only
 twos() { x=$((16#$1)); [ "$x" -gt 32767 ] && ((x=x-65536)); printf "%+d " $x; }
+secs() { printf "%d:%02d" $(($1/60)) $(($1%60));}
 OneDate() {
 x=`doc $1`
 name_dec_pos=$((x+44))
@@ -64,12 +65,16 @@ elif [ "${hex:x:8}" == "47556e69" ]; then
 readable="Stamp                 "
 elif [ "${hex:x:8}" == "4d646c45" ] && [ "${hex:figureout:20}" == "00000000000300000001" ]; then
 #readable="Mdle"
-echo "${hex:figureout:8}"  #I got it 4/18/21 - the 0001 is the important part
-readable="All Pro Class (May be Wrong)"
+readable="All Pro Class         "
+elif [ "${hex:x:8}" == "4d646c45" ] && [ "${hex:figureout:20}" == "00000000000400000000" ]; then
+#readable="Mdle"
+readable="Superstar Class       "
+elif [ "${hex:x:8}" == "4d646c45" ] && [ "${hex:figureout:20}" == "00000000000400000001" ]; then
+#readable="Mdle"
+readable="All Superstar Class   "
 elif [ "${hex:x:8}" == "4d646c45" ] ; then
 #readable="Mdle"
-echo "${hex:figureout:20}"
-readable="Pro or Superstar Class"
+readable="Pro Class             "
 elif [ "${hex:x:8}" == "506c6179" ]; then
 readable="Last Sport Played     "
 else
@@ -84,15 +89,15 @@ sportin="Swordplay"
 elif [ "${hex:y:4}" == "0002" ]; then
 sportin="Archery"
 elif [ "${hex:y:4}" == "0003" ]; then
-sportin="???-Is a sport"
+sportin="Look at your wii and open an issue with the correct sport. Thanks for your help!"
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0002" ]; then
-	sportin="Basketball - 3 Point Contest"
+	sportin="3 Point Contest"
 elif [ "${hex:y:4}" == "0004" ]; then
 sportin="Basketball"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0002" ]; then
-	sportin="Bowling - Standard"
+	sportin="Standard Bowling"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0004" ]; then
-	sportin="Bowling - Spin Control"
+	sportin="Spin Control Bowling"
 elif [ "${hex:y:4}" == "0005" ]; then
 	sportin="Bowling"
 elif [ "${hex:y:4}" == "0006" ]; then
@@ -104,7 +109,7 @@ sportin="Wakeboarding - Beginner"
 elif [ "${hex:y:4}" == "0008" ]; then
 sportin="Wakeboarding"
 elif [ "${hex:y:4}" == "0009" ]; then
-sportin="???-Is a sport"
+sportin="Island Flyover"
 elif [ "${hex:y:4}" == "000a" ]; then
 sportin="Golf"
 elif [ "${hex:y:4}" == "000b" ]; then
@@ -112,7 +117,7 @@ sportin="Frisbee Golf"
 elif [ "${hex:y:4}" == "000c" ]; then
 sportin="Cycling"
 elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0001" ]; then
-	sportin="Air Sports - Skydiving"
+	sportin="Skydiving"
 elif [ "${hex:y:4}" == "000d" ]; then
 	sportin="Air Sports"
 elif [ "${hex:y:4}" == "000e" ]; then
@@ -121,54 +126,48 @@ elif [ "${hex:y:4}" == "000f" ]; then
 sportin="???"
 fi
 
-printf "%s %s " `hexToDate $min`  "$readable" `hexToAscii ${hex:name_dec_pos:20}` ${hex:y:28} $sportin
+printf "%s %s %s " `hexToDate $min` " " "$readable" `hexToAscii ${hex:name_dec_pos:20}` $sportin
 if [ "${hex:x:8}" == "55705363" ] && [ "${hex:y:4}" == "000a" ]; then
 # Trying to show negative numbers for Golf
-twos ${hex:new:8}
-twos ${hex:old:8}
+twos ${hex:((new+4)):4}
+printf "<- "
+twos ${hex:((old+4)):4}
 elif [ "${hex:x:8}" == "55705363" ] && [ "${hex:y:4}" == "000b" ]; then
-twos ${hex:new:8} 
-twos ${hex:old:8}
+# Trying to show negative numbers for Frisbee/Golf
+	twos ${hex:((new+4)):4} 
+printf "<- "
+twos ${hex:((old+4)):4}
+elif [ "${hex:x:8}" == "55705363" ] && [ "${hex:y:4}" == "000c" ]; then
+	#Cyling formatting the score
+c1=${hex:((old+3)):5}
+c1h=$((16${c1}))
+c1s=${c1h:0:333}
+c1ms=${c1h:3:2}
+printf "%d %s.%02w" 0x${hex:((old+1)):2} `secs ${c1s}` ${c1ms}
+	printf "<- "
+c1=${hex:((new+3)):5}
+c1h=$((16${c1}))
+c1s=${c1h:0:333}
+c1ms=${c1h:3:2}
+printf "%d %s.%02w" 0x${hex:((new+1)):2} `secs ${c1s}` ${c1ms}
+echo "untested: make an issue for cycling if scores do not make sense"
 elif [ "${hex:x:8}" == "55705363" ]; then
 printf "%d %s %d" `hexToDec ${hex:new:8}` "<-" `hexToDec ${hex:old:8}`
-fi
-if [ "${hex:x:8}" == "4d646c45" ]; then
-printf "%s %s %s" ${hex:new:4} "<-" ${hex:old:4}
 fi
 echo
 }
 sport() {
 printf "%s:\t" "$1" 
 x=`doc $2`
+	for i in 1 2 3 4 5
+	do
 min=${hex:x:8}
 if [ "$min" != "00000000" ]; then
 countStamps=$((countStamps+1))
 fi
 printf "%s %s  " `hexToDate $min`
 x=$((x+8))
-min=${hex:x:8}
-if [ "$min" != "00000000" ]; then
-countStamps=$((countStamps+1))
-fi
-printf "%s %s  " `hexToDate $min`
-x=$((x+8))
-min=${hex:x:8}
-if [ "$min" != "00000000" ]; then
-countStamps=$((countStamps+1))
-fi
-printf "%s %s  " `hexToDate $min`
-x=$((x+8))
-min=${hex:x:8}
-if [ "$min" != "00000000" ]; then
-countStamps=$((countStamps+1))
-fi
-printf "%s %s  " `hexToDate $min`
-x=$((x+8))
-min=${hex:x:8}
-if [ "$min" != "00000000" ]; then
-countStamps=$((countStamps+1))
-fi
-printf "%s %s  " `hexToDate $min`
+	done
 echo
 }
 hexToAscii() { 
@@ -210,7 +209,7 @@ echo ${1^^}
 }
 
 z=`doc 82c0`
-echo `hexToAscii ${hex:z:30}`
+echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
 sport "Showdown           " "8cec"
 sport "Swordplay Duel     " "8d00"
 sport "Speed Slice        " "8d14"
@@ -235,7 +234,7 @@ echo $countStamps "/100" "Stamps total for above player"
 countStamps=0
 echo
 z=`doc 90b4`
-echo `hexToAscii ${hex:z:30}`
+echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
 sport "Showdown           " "9af4"
 sport "Swordplay Duel     " "9b08"
 sport "Speed Slice        " "9b1c"
@@ -257,11 +256,11 @@ sport "Canoeing           " "9c84"
 sport "Cycling            " "9cac"
 sport "Skydiving          " "9cc0"
 
-countStamps=0
 echo $countStamps "/100" "Stamps total for above player"
+countStamps=0
 echo
 z=`doc 9ea8`
-echo `hexToAscii ${hex:z:30}`
+echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
 sport "Showdown           " "a8d8"
 sport "Swordplay Duel     " "a8e3"
 sport "Speed Slice        " "a8fc"
@@ -289,8 +288,7 @@ echo
 # For more players, get the last player and add 0xDE4 to all values.
 
 # 25 Records of Recent history
-echo "25 Recent Plays - Instead of clicking A & B to start game, just wait to see the plays or use the + or - button the Wiimote."
-OneDate "4e24"
+echo -e "${GREEN}25 Recent Plays${SET} - Instead of clicking A & B to start game, just wait to see the plays or use the + or - button the Wiimote."
 OneDate "4e34"
 OneDate "4ffc"
 OneDate "51c4"
