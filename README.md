@@ -56,6 +56,7 @@ In the Future?
 - In Return Table Tennis, the score freezes at 999 but the game continues. I am curious if the save data continues. 
 - Investigating the recommendation system for Wii Sports Resort. I suspect there is a place to keep track of the number of games played but still testing.
 - Level (0 - 2500) and accomplishments (Superstar or Pro) for games have not been found but I suspect a place.
+- Island Flyover Statistics including iPoints, balloons, 8 unlockable achievments, and balloons/iPoints in 5 minutes record.
 
 Branches
 - Everything is done directly to master. Dev is for my experimentations and will include wacky numbers and be harder to read.
