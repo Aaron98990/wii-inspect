@@ -25,26 +25,21 @@ Retrieving Save File
 **The save file is stored in SD://private/wii/title/RZTE/data.bin. If there is a file already there, change the folder or file name on your laptop to allow for a newer save file to be copied.**
 
 Dowload Wii Segher Tools for Tachtig (and more)
-- Create .wii folder in terminal: ``mkdir ~/.wii``
-- Create the following files with the text **inside** parentheses - do not include parentheses.  ~/.wii/sd-key (ab01b9d8e1622b08afbad84dbfc2a55d), ~/.wii/sd-iv (216712e6aa1f689f95c5a22324dc6a98) ~/.wii/md5-blanker (0e65378199be4517ab06ec22451a5793).
-- Convert the three files above, from hexadecimal into the binary using ``xxd -rb ~/.wii/md5-blanker`` and ``xxd -rb ~/.wii/sd-iv`` and ``xxd -rb ~/.wii/md5-blanker``
 - Type in your terminal: ``cd ~`` then ``git clone https://github.com/Plombo/segher-wii-tools``
 - Type in your terminal: `cd wii-inspect`, then type ``make all``. If there are problems, type `make clean` then `make all`.
-- Type ``chmod +x tachtig`` to create an executable file
-- Type ``pwd`` in the terminal for your location from the last step
-- To make it easier, you can copy the tachtig file to a location in your $PATH with ``sudo cp tachtig /usr/local/bin`` or add this code to the ``~/.bash_profile`` file or ``~/.bashrc file`` file: ``export PATH=$PATH:~/wii-inspect`` <- Replace ~/wii-inspect with the result of pwd from last step
+- Type``chmod +x tachtig`` to create an executable file
+- Copy the tachtig file to a location in your $PATH with ``sudo cp tachtig /usr/local/bin`` **You must do this**
 
 Transferring the Save File
 - Insert the SD Card into a laptop or laptop extension and navigate to SD Card folder
-- Change the `private` folder to today's date and time ``202109071319`` for easy tracking of multiple save files. Right click the folder and choose rename.
+- Rename the `private` folder to today's date and time ``202109071319`` for easy tracking of multiple save files.
 - If using WSL or if you would like, copy or move the directory to your laptop and outside the SD Card (like your desktop). 
-- If using WSL, do this ``mv /mnt/C/users/Aaron/Desktop/202109071319 ~/wii-inspect`` <- Change Aaron to your username and make other changes as needed
+- If using WSL, do this ``mv /mnt/C/users/aaron/Desktop/202109071319 ~/wii-inspect`` <- Change aaron to your username and make other changes as needed
 
 Using Wii-Inspect
-- In the terminal, ``cd wii-inspect`` then type ``bash ~/wii-inspect/stamps.bash 202109071319/wii/title/RZTE/data.bin`` and ``bash ~/wii-inspect/highScores.bash 202109071319/wii/title/RZTE/data.bin`` <- Change as needed
-- It may be easier to add the `stamps.bash` and `highScores.bash` to your path and use better names
-- That's all! Enjoy going through history!
-- Please report any errors (including in README.md) using GitHub's issue function. Include a screenshot of the terminal results, the mistake, and what you believe the correction should be.
+- Type in your terminal: ``cd ~`` then ``git clone https://github.com/Aaron98990/wii-inspect``
+- In the terminal, ``cd wii-inspect`` then type ``bash stamps.bash 202109071319/wii/title/RZTE/data.bin`` and ``bash ~/wii-inspect/highScores.bash 202109071319/wii/title/RZTE/data.bin`` <- Change the date and make other changes as needed
+- That's all! Enjoy going through history! **Please report any errors (including in README.md) using GitHub's issue function. **
 
 Extra Information
 
