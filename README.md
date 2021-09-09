@@ -6,7 +6,7 @@ Prequisite Hadware/Software:
 - Wii Sports Resort Save Data - if you have played Wii Sports Resort on your wii, you have this
 - Wii that has an SD Card slot - not a Wii Mini
 - Laptop or laptop extension that has an SD Card slot
-- Terminal that runs BASH (On Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed. On Mac, zsh is the default.)
+- Terminal that runs BASH (On Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed.)
 - gcc
 
 About:
@@ -26,7 +26,7 @@ Retrieving Save File
 
 Dowload Wii Segher Tools for Tachtig (and more)
 - Type in your terminal: ``cd ~`` then ``git clone https://github.com/Plombo/segher-wii-tools``
-- Type in your terminal: `cd wii-inspect`, then type ``make all``. If there are problems, type `make clean` then `make all`.
+- Type in your terminal: `cd segher-wii-tools`, then type ``make all``. If there are problems, type `make clean` then `make all`.
 - Type``chmod +x tachtig`` to create an executable file
 - Copy the tachtig file to a location in your $PATH with ``sudo cp tachtig /usr/local/bin`` **You must do this**
 
@@ -38,7 +38,7 @@ Transferring the Save File
 
 Using Wii-Inspect
 - Type in your terminal: ``cd ~`` then ``git clone https://github.com/Aaron98990/wii-inspect``
-- In the terminal, ``cd wii-inspect`` then type ``bash stamps.bash 202109071319/wii/title/RZTE/data.bin`` and ``bash ~/wii-inspect/highScores.bash 202109071319/wii/title/RZTE/data.bin`` <- Change the date and make other changes as needed
+- In the terminal, ``cd wii-inspect`` then type ``bash stamps.bash 202109071319/wii/title/RZTE/data.bin`` and ``bash highScores.bash 202109071319/wii/title/RZTE/data.bin`` <- Change the date and make other changes as needed
 - That's all! Enjoy going through history! **Please report any errors (including in README.md) using GitHub's issue function. **
 
 Extra Information
