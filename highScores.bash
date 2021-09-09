@@ -1,5 +1,14 @@
 #!/bin/bash                                                       
 
+# Allow tactig ussage
+mkdir -p ~/.wii
+echo "ab01b9d8e1622b08afbad84dbfc2a55d" > ~/.wii/sd-key
+echo "216712e6aa1f689f95c5a22324dc6a98" > ~/.wii/sd-iv
+echo "0e65378199be4517ab06ec22451a5793" > ~/.wii/md5-blanker
+xxd -r -p ~/.wii/sd-key ~/.wii/sd-key
+xxd -r -p ~/.wii/sd-iv ~/.wii/sd-iv
+xxd -r -p ~/.wii/md5-blanker ~/.wii/md5-blanker
+
 # Exits program if first argument is empty
 if [ -z "$1" ]; then
 	echo bash highScores.bash FILE
