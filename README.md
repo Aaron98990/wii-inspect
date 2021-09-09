@@ -1,6 +1,6 @@
 Prequisite Reading for All:
-- https://medium.com/@pantelis/protecting-game-saves-and-the-case-of-unworthy-e24c8fd68e16
-- Hint: All Wii Save Files have standardized encryption. After decryption using tachtig from Segher Wii Tools, Wii Sports Resort uses binary.
+- [Protecting and Cracking Game Save files](https://medium.com/@pantelis/protecting-game-saves-and-the-case-of-unworthy-e24c8fd68e16)
+- Hint: All Wii save files have standardized encryption. After decryption using tachtig from Segher Wii Tools, Wii Sports Resort uses binary.
 
 Prequisite Hadware/Software:
 - Wii Sports Resort Save Data - if you have played Wii Sports Resort on your wii, you have this
@@ -14,10 +14,10 @@ About:
 
 <img src="https://user-images.githubusercontent.com/45950113/132385115-596b0a18-a88f-4928-987c-d44c3d0fc1d4.png" width="700">
 <img src="https://user-images.githubusercontent.com/45950113/132387567-c2bd82f4-63eb-45e0-9eaa-1eec0cc06c0d.png" width="500">
-<img src="https://user-images.githubusercontent.com/45950113/132388144-3670090e-17b2-4ed5-a3f2-cee285f81a37.png" width="400">
+<img src="https://user-images.githubusercontent.com/45950113/132388144-3670090e-17b2-4ed5-a3f2-cee285f81a37.png" width="450">
 
 Retrieving Save File
-- Open the white slot under the reset button and insert an SD Card
+- For Wii, open the white slot under the reset button and insert an SD Card.
 - From the Home Screen on the Wii, click Wii (bottom left) > Data Managment > Save Data > Wii > Choose Game (Umbrella) > Copy
 
 **Deleting a save file will reset the game and remove all scores and progress. Do not click delete.**
