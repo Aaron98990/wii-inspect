@@ -4,6 +4,7 @@ Prequisite Reading for All:
 
 Prequisite Hadware/Software:
 - Wii Sports Resort Save Data - if you have played Wii Sports Resort on your wii, you have this
+- SD Card
 - Wii that has an SD Card slot - not a Wii Mini
 - Laptop or laptop extension that has an SD Card slot
 - Terminal that runs BASH (On Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed.)
