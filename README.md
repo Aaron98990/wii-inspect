@@ -8,7 +8,7 @@ Prequisite Hadware/Software:
 - Wii that has an SD Card slot - not a Wii Mini
 - Laptop or laptop extension that has an SD Card slot
 - Terminal that runs BASH (On Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed.)
-- gcc
+- gcc, xxd
 
 About:
 - Retrieve high scores, dates of recieved stamps, and the last 25 plays from the save file for Wii Sports Resort.
@@ -53,6 +53,7 @@ In the Future?
 - Investigating the recommendation system for Wii Sports Resort. I suspect there is a place to keep track of the number of games played but still testing.
 - Level (0 - 2500) and accomplishments (Superstar or Pro) for games have not been found but I suspect a place.
 - Island Flyover Statistics including iPoints, balloons, 8 unlockable achievments, and balloons/iPoints in 5 minutes record.
+- Include the **Superstar Score** - the score of a game where a player starts and ends at or as close as possible to Skill Level 2000.
 
 Branches
 - Everything is done directly to master. Dev is for my experimentations and will include wacky numbers and be harder to read.
@@ -63,3 +64,5 @@ Other Wii Decrypting or Interesting Articles
 - http://wiibrew.org/wiki/FE100 (FE100 is Windows's port of Segher tools)
 - http://www.kellbot.com/extracting-graphing-wii-fit-data/
 - Keys from the Wii for Segher tools https://hackmii.com/2008/04/keys-keys-keys/
+- This "skill level" is an Elo-style measure of performance when competing against an AI oppoent. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
+- The skill points are a floating point number, of which only its integer part (its floor, i.e. rounded down, not rounded to nearest) is visible. http://orden-y-concierto.blogspot.com/2013/04/wii-sports-tennis-skill-points-system.html
