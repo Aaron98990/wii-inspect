@@ -50,7 +50,7 @@ In the Future?
 - Improve formatting and use more for loops. Hard to use for loops, especially when lots of switching between hexadecimal, binary, and decimal.
 - Paper or Documentation with analysis of offsets of save data
 - In Return Table Tennis, the score freezes at 999 but the game continues. I am curious if the save data continues. 
-- Investigating the recommendation system for Wii Sports Resort. I suspect there is a place to keep track of the number of games played but still testing.
+- Investigating the recommendation system for Wii Sports Resort. I suspect there is a place to keep track of the number of games played but still testing. Note: playing the game once does not necesairly change the recommended game even after restarting.
 - Level (0 - 2500) and accomplishments (Superstar or Pro) for games have not been found but I suspect a place.
 - Island Flyover Statistics including iPoints, balloons, 8 unlockable achievments, and balloons/iPoints in 5 minutes record.
 - Include the **Superstar Score** - the score of a game where a player starts and ends at or as close as possible to Skill Level 2000.
@@ -64,5 +64,6 @@ Other Wii Decrypting or Interesting Articles
 - http://wiibrew.org/wiki/FE100 (FE100 is Windows's port of Segher tools)
 - http://www.kellbot.com/extracting-graphing-wii-fit-data/
 - Keys from the Wii for Segher tools https://hackmii.com/2008/04/keys-keys-keys/
-- This "skill level" is an Elo-style measure of performance when competing against an AI oppoent. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
+- Skill level is an Elo-style measure of performance when competing against AI oppoent(s) with their own visible skill level. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
 - The skill points are a floating point number, of which only its integer part (its floor, i.e. rounded down, not rounded to nearest) is visible. http://orden-y-concierto.blogspot.com/2013/04/wii-sports-tennis-skill-points-system.html
+- ELO Rating Elo rating https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
