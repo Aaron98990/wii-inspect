@@ -69,4 +69,5 @@ Other Wii Decrypting or Interesting Articles
 - Skill level is an Elo-style measure of performance when competing against AI oppoent(s) with their own visible skill level. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
 - The skill points are a floating point number, of which only its integer part (its floor, i.e. rounded down, not rounded to nearest) is visible. http://orden-y-concierto.blogspot.com/2013/04/wii-sports-tennis-skill-points-system.html
 - ELO Rating Elo rating https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
-**If you have other interesting articles, please open an GitHub Issue and share.**
+- Mii Representations in Data Files (Including Guests) https://sites.google.com/view/miilibrary/home
+**If you have other interesting articles, please open a GitHub Issue and share.**
