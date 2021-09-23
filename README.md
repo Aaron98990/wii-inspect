@@ -1,8 +1,9 @@
-Prequisite Reading for All:
+# wii-inspect
+Prequisite Reading
 - [Protecting and Cracking Game Save files](https://medium.com/@pantelis/protecting-game-saves-and-the-case-of-unworthy-e24c8fd68e16)
 - Hint: All Wii save files have standardized encryption. After decryption using tachtig from Segher Wii Tools, Wii Sports Resort uses binary.
 
-Prequisite Hadware/Software:
+Prequisite Hadware/Software
 - Wii Sports Resort Save Data - if you have played Wii Sports Resort on your wii, you have this
 - SD Card
 - Wii that has an SD Card slot - not a Wii Mini
@@ -10,13 +11,14 @@ Prequisite Hadware/Software:
 - Terminal that runs BASH 5 or later (On Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed.)
 - gcc, xxd, git
 
-About:
+About
 - Retrieve high scores, dates of recieved stamps, and the last 25 plays from the save file for Wii Sports Resort.
 
 <img src="https://user-images.githubusercontent.com/45950113/132385115-596b0a18-a88f-4928-987c-d44c3d0fc1d4.png" width="700">
 <img src="https://user-images.githubusercontent.com/45950113/132387567-c2bd82f4-63eb-45e0-9eaa-1eec0cc06c0d.png" width="500">
 <img src="https://user-images.githubusercontent.com/45950113/132388144-3670090e-17b2-4ed5-a3f2-cee285f81a37.png" width="450">
 
+## Instructions
 Retrieving Save File
 - For Wii, open the white slot under the reset button and insert an SD Card.
 - From the Home Screen on the Wii, click Wii (bottom left) > Data Managment > Save Data > Wii > Choose Game (Umbrella) > Copy
@@ -37,12 +39,12 @@ Transferring the Save File
 - If using WSL or if you would like, copy or move the directory to your laptop and outside the SD Card (like your desktop). 
 - If using WSL, do this ``mv /mnt/C/users/aaron/Desktop/202109071319 ~/wii-inspect`` <- Change aaron to your username and make other changes as needed
 
-Using Wii-Inspect
+Using wii-inspect
 - Type in your terminal: ``cd ~`` then ``git clone https://github.com/Aaron98990/wii-inspect``
 - In the terminal, ``cd wii-inspect`` then type ``bash stamps.bash 202109071319/wii/title/RZTE/data.bin`` and ``bash highScores.bash 202109071319/wii/title/RZTE/data.bin`` <- Change the date and make other changes as needed
 - That's all! Enjoy going through history! **Please report any errors (including in README.md) using GitHub's issue function. **
 
-Extra Information
+## Extra Information
 
 In the Future?
 - View high scores on a per-player bases. I know where it is on the data/game file, I just have not "coded" it.
