@@ -325,4 +325,15 @@ OneDate "7564"
 OneDate "772c"
 OneDate "78f4"
 
+echo
+echo -e "${GREEN}Player 1 Recent Skill Levels${SET} - In beta. Report errors using GitHub Issues on Aaron98990/wii-inspect"
+x=`doc 8629`
+x=$((x+1))
+printf "3 Point Contest: "
+	for i in {1..25}
+	do		
+printf "%s " `hexToDec ${hex:x:3}`
+		x=$((x+6))
+done
+
 
