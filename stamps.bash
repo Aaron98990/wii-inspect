@@ -240,6 +240,7 @@ sport "Golf               " "8e68"
 sport "Canoeing           " "8e7c"
 sport "Cycling            " "8ea4"
 sport "Skydiving          " "8eb8"
+#Code by Aaron Feleke
 echo $countStamps "/100" "Stamps total for above player"
 countStamps=0
 echo
