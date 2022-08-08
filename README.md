@@ -2,6 +2,7 @@
 Prequisite Reading
 - [Protecting and Cracking Game Save files](https://medium.com/@pantelis/protecting-game-saves-and-the-case-of-unworthy-e24c8fd68e16)
 - Hint: All Wii save files have standardized encryption. After decryption using tachtig from Segher Wii Tools, Wii Sports Resort uses binary.
+- Articles about my experience with this repository [Article 1](https://medium.com/@feleke/decoding-wii-save-data-3fc15c494cc4) / [Article 2](https://medium.com/@feleke/decoding-saving-files-best-practices-e7cf4196876c)
 
 Prequisite Hadware/Software
 - Wii Sports Resort Save Data - if you have played Wii Sports Resort on your wii, you have this
@@ -61,13 +62,19 @@ Branches
 - Everything is done directly to master. Dev is for my experimentations and will include wacky numbers and be harder to read.
 
 Other Wii Decrypting or Interesting Articles
-- Wii Fit Weights https://code.google.com/archive/p/wii-fit-parser/wikis/HowTo.wiki (They used Preon-Java Library)
-- https://jansenprice.com/blog?id=9-Extracting-Data-from-Wii-Fit-Plus-Savegame-Files 
-- http://wiibrew.org/wiki/FE100 (FE100 is Windows's port of Segher tools)
-- http://www.kellbot.com/extracting-graphing-wii-fit-data/
-- Keys from the Wii for Segher tools https://hackmii.com/2008/04/keys-keys-keys/
-- Skill level is an Elo-style measure of performance when competing against AI oppoent(s) with their own visible skill level. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
-- The skill points are a floating point number, of which only its integer part (its floor, i.e. rounded down, not rounded to nearest) is visible. http://orden-y-concierto.blogspot.com/2013/04/wii-sports-tennis-skill-points-system.html
-- ELO Rating Elo rating https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
-- Mii Representations in Data Files (Including Guests) https://sites.google.com/view/miilibrary/home
+- Repos for Wii Weights
+  - Wii Fit Weights https://code.google.com/archive/p/wii-fit-parser/wikis/HowTo.wiki (They used Preon-Java Library)
+  - Based on Wii Fit https://code.google.com/archive/p/wiifit/
+- Walthroughs for Wii Weights
+  - Jansen's Walkthrough for Wii Fit https://jansenprice.com/blog?id=9-Extracting-Data-from-Wii-Fit-Plus-Savegame-Files 
+  - Graph based on Jansen's blog http://www.kellbot.com/extracting-graphing-wii-fit-data/
+- Segher Wii Tools
+  - http://wiibrew.org/wiki/FE100 (FE100 is Windows's port of Segher tools)
+  - Keys from the Wii for Segher tools https://hackmii.com/2008/04/keys-keys-keys/
+- Skill Level
+  - Skill level is an Elo-style measure of performance when competing against AI oppoent(s) with their own visible skill level. https://arstechnica.com/gaming/2017/04/was-ubers-ceo-really-the-second-best-wii-sports-tennis-player/
+  - The skill points are a floating point number, of which only its integer part (its floor, i.e. rounded down, not rounded to nearest) is visible. http://orden-y-concierto.blogspot.com/2013/04/wii-sports-tennis-skill-points-system.html
+  - ELO Rating Elo rating https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
+- Miis
+  - Mii Representations in Data Files (Including Guests) https://sites.google.com/view/miilibrary/home
 **If you have other interesting articles, please open a GitHub Issue and share.**
