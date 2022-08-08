@@ -168,7 +168,7 @@ echo
 }
 sport() {
 printf "%s:\t" "$1" 
-x=`doc $2`
+x=$((offset+`doc $2`))
 	for i in 1 2 3 4 5
 	do
 min=${hex:x:8}
@@ -218,8 +218,16 @@ toUpper() {
 echo ${1^^}
 }
 
-z=`doc 82c0`
-echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
+offset=0
+for i in {1..12}
+do
+
+	z=$((offset+`doc 82c0`))
+	name=`hexToAscii ${hex:z:30}`
+  if [ -z "$name" ]; then
+		break
+	fi  
+echo -e "${RED}${name}${SET}"
 sport "Showdown           " "8cec"
 sport "Swordplay Duel     " "8d00"
 sport "Speed Slice        " "8d14"
@@ -243,59 +251,23 @@ sport "Skydiving          " "8eb8"
 #Code by Aaron Feleke
 echo $countStamps "/100" "Stamps total for above player"
 countStamps=0
-echo
-z=`doc 90b4`
-echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
-sport "Showdown           " "9af4"
-sport "Swordplay Duel     " "9b08"
-sport "Speed Slice        " "9b1c"
-sport "Power Crusing      " "9b30"
-sport "Archery            " "9b58"
-sport "Frisbee Dog        " "9b6c"
-sport "3 Point Contest    " "9b80"
-sport "Pickup Basketball  " "9b94"
-sport "Standard Bowling   " "9ba8"
-sport "100 Pin Bowling    " "9bbc"
-sport "Spin Control       " "9bd0"
-sport "Frisbee Golf       " "9bf8"
-sport "Return Table Tennis" "9c0c"
-sport "Table Tennis Match " "9c20"
-sport "Wakeboarding       " "9c34"
-sport "Island Flyover     " "9c48"
-sport "Golf               " "9c70"
-sport "Canoeing           " "9c84"
-sport "Cycling            " "9cac"
-sport "Skydiving          " "9cc0"
 
-echo $countStamps "/100" "Stamps total for above player"
-countStamps=0
-echo
-z=`doc 9ea8`
-echo -e "${RED}`hexToAscii ${hex:z:30}`${SET}"
-sport "Showdown           " "a8d8"
-sport "Swordplay Duel     " "a8e3"
-sport "Speed Slice        " "a8fc"
-sport "Power Crusing      " "a910"
-sport "Archery            " "a938"
-sport "Frisbee Dog        " "a94c"
-sport "3 Point Contest    " "a960"
-sport "Pickup Basketball  " "a974"
-sport "Standard Bowling   " "a988"
-sport "100 Pin Bowling    " "a99c"
-sport "Spin Control       " "a9b0"
-sport "Frisbee Golf       " "a9d8"
-sport "Return Table Tennis" "a9ec"
-sport "Table Tennis Match " "aa00"
-sport "Wakeboarding       " "aa14"
-sport "Island Flyover     " "aa28"
-sport "Golf               " "aa50"
-sport "Canoeing           " "aa64"
-sport "Cycling            " "aa8c"
-sport "Skydiving          " "aaa0"
 
-echo $countStamps "/100" "Stamps total for above player"
-countStamps=0
 echo
+echo -e "${GREEN}Recent Skill Levels${SET} - In beta. Report errors using GitHub Issues on Aaron98990/wii-inspect"
+x=`doc 8629`
+x=$((x+1+offset))
+printf "3 Point Contest: "
+	for i in {1..25}
+	do		
+printf "%s " `hexToDec ${hex:x:3}`
+		x=$((x+6))
+done
+
+interval=`doc df4`
+offset=$((offset+interval))
+echo
+done
 # For more players, get the last player and add 0xDE4 to all values.
 
 # 25 Records of Recent history
@@ -326,15 +298,5 @@ OneDate "7564"
 OneDate "772c"
 OneDate "78f4"
 
-echo
-echo -e "${GREEN}Player 1 Recent Skill Levels${SET} - In beta. Report errors using GitHub Issues on Aaron98990/wii-inspect"
-x=`doc 8629`
-x=$((x+1))
-printf "3 Point Contest: "
-	for i in {1..25}
-	do		
-printf "%s " `hexToDec ${hex:x:3}`
-		x=$((x+6))
-done
 
 
