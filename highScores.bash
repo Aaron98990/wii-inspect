@@ -58,6 +58,20 @@ hexToAscii() {
 	x+=$(echo ${input:34:2} | xxd -r -p)
 	names+=($x)
 }
+hexToAscii4() { 
+	input=$1
+	x=""
+	x+=$(echo ${input:2:2} | xxd -r -p)
+	x+=$(echo ${input:6:2} | xxd -r -p)
+	x+=$(echo ${input:10:2} | xxd -r -p)
+	x+=$(echo ${input:14:2} | xxd -r -p)
+	x+=$(echo ${input:18:2} | xxd -r -p)
+	x+=$(echo ${input:22:2} | xxd -r -p)
+	x+=$(echo ${input:26:2} | xxd -r -p)
+	x+=$(echo ${input:30:2} | xxd -r -p)
+	x+=$(echo ${input:34:2} | xxd -r -p)
+	echo $x
+}
 hexToAscii2() { 
 	input=$1
 	x=""
@@ -72,6 +86,23 @@ hexToAscii2() {
 		fi
 done
 	echo $x
+}
+toUpper() {
+echo ${1^^}
+}
+hexToBin() {
+x=`toUpper $1`
+echo "obase=2; ibase=16; $x" | bc
+}
+hexToBinToCount() {
+BIN=`hexToBin $1`
+z=$((0))
+for (( i=0; i<${#BIN}; i++ )); do
+		if [ "${BIN:$i:1}" == "1" ]; then
+			z=$((z+1))
+		fi
+	done
+echo ${z}
 }
 
 # Missing about 5 positions for most high scores
@@ -145,14 +176,78 @@ done
 echo
 printf 'Skydiving: %d\n' 0x${hex:35468:4}
 
-
 echo
+echo -e "${GREEN}Wii Record Holders${SET}"
+a=`doc ffe`
+b=`doc 1014`
+c=`doc 102a`
+d=`doc 1040`
+e=`doc 1056`
+f=`doc 106c`
+printf 'Power Crusing: %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}`
+a=`doc 1406`
+b=`doc 141c`
+c=`doc 1432`
+printf 'Archery: %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 180e`
+printf 'Frisbee Dog: %s\n' `hexToAscii4 ${hex:${a}:20}`
+a=`doc 1c16`
+printf '3 Point Contest: %s\n' `hexToAscii4 ${hex:${a}:20}`
+a=`doc 201e`
+b=`doc 2426`
+c=`doc 282e`
+printf 'Bowling: %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 2c36`
+b=`doc 2c4c`
+c=`doc 2c62`
+printf 'Canoeing: %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 303e`
+printf 'Return Ping Pong: %s\n' `hexToAscii4 ${hex:${a}:20}`
+a=`doc 3446`
+b=`doc 345c`
+c=`doc 3472`
+printf 'Wakeboarding: %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 3c40`
+b=`doc 3c56`
+c=`doc 3c6c`
+d=`doc 3c82`
+e=`doc 3c98`
+f=`doc 3cae`
+g=`doc 3cae`
+printf 'Golf: %s %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}` `hexToAscii4 ${hex:${g}:20}`
+a=`doc 3cc4`
+b=`doc 3cda`
+c=`doc 3d1c`
+printf 'Golf (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 4048`
+c=`doc 408a`
+e=`doc 40b6`
+f=`doc 40cc`
+g=`doc 40e2`
+printf 'Frisbee Golf: %s %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}` `hexToAscii4 ${hex:${g}:20}`
+c=`doc 4124`
+printf 'Frisbee Golf (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 4466`
+b=`doc 447c`
+c=`doc 4492`
+d=`doc 44a8`
+e=`doc 44be`
+f=`doc 44ea`
+printf 'Cycling: %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}`
+a=`doc 4500`
+b=`doc 4516`
+c=`doc 486e`
+printf 'Cycling (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
+a=`doc 486e`
+printf 'Skydiving: %s\n' `hexToAscii4 ${hex:${a}:20}`
+echo
+
 echo -e "${GREEN}Most Wii Records${SET}"
 (IFS=$'\n'; sort <<< "${names[*]}") | uniq -c
 echo
 
 offset=0
-echo -e "${GREEN}Personal Records${SET}"
+echo -e "${RED}Personal ${PURPLE}Records${SET}"
 for i in {1..12}
 do
 i=$((offset+`doc 82c0`))
@@ -223,6 +318,12 @@ echo
 i=$((`doc 8c9e`+offset))
 printf 'Skydiving: %d\n' 0x${hex:i:4}
 printf 'Island Flyover in 5 minutes (iPoints, Baloons): %d %d\n' 0x${hex:$((offset+`doc 8bfe`)):4} 0x${hex:$((offset+`doc 8c02`)):4}
+a=`doc 8f88`
+b=`doc 8fc8`
+c=`doc 9008`
+printf 'Island Flyover White Baloons (Day, Evening, Night) %s/372 %s/340 %s/209\n' `hexToBinToCount ${hex:$((offset+${a})):94}` `hexToBinToCount ${hex:$((offset+${b})):86}` `hexToBinToCount ${hex:$((offset+${c})):54}`
+
+
 interval=`doc df4`
 offset=$((offset+interval))
 echo
