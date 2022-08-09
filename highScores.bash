@@ -14,15 +14,15 @@ if [ -z "$1" ]; then
 	echo bash highScores.bash FILE
 	echo FILE should be: Sports2.dat OR data.bin
 	exit 1
-# Exits program if file does not exist.
+	# Exits program if file does not exist.
 elif [ ! -f "$1" ]; then
-	    echo "$1: No such file"
-	    exit 2
+	echo "$1: No such file"
+	exit 2
 elif [ "${1: -3}" == "bin" ]; then
-tachtig "$1"
-hex=$(xxd -p -c 1000000 00010000525a5445/Sports2.dat)
+	tachtig "$1"
+	hex=$(xxd -p -c 1000000 00010000525a5445/Sports2.dat)
 else
-hex=$(xxd -p -c 1000000 $1)
+	hex=$(xxd -p -c 1000000 $1)
 fi
 # Colors
 DARKGRAY='\033[1;30m'
@@ -78,31 +78,31 @@ hexToAscii2() {
 	for i in 2 6 10 14 18 22 26 30 34
 	do
 		if [ "${input:$i:2}" == "20" ]; then
-	x+=" "
+			x+=" "
 		elif [ "${input:$i:2}" == "00" ]; then
 			x+=" "
 		else
-	x+=$(echo ${input:$i:2} | xxd -r -p)
+			x+=$(echo ${input:$i:2} | xxd -r -p)
 		fi
-done
+	done
 	echo $x
 }
 toUpper() {
-echo ${1^^}
+	echo ${1^^}
 }
 hexToBin() {
-x=`toUpper $1`
-echo "obase=2; ibase=16; $x" | bc
+	x=`toUpper $1`
+	echo "obase=2; ibase=16; $x" | bc
 }
 hexToBinToCount() {
-BIN=`hexToBin $1`
-z=$((0))
-for (( i=0; i<${#BIN}; i++ )); do
+	BIN=`hexToBin $1`
+	z=$((0))
+	for (( i=0; i<${#BIN}; i++ )); do
 		if [ "${BIN:$i:1}" == "1" ]; then
 			z=$((z+1))
 		fi
 	done
-echo ${z}
+	echo ${z}
 }
 
 # Missing about 5 positions for most high scores
@@ -134,44 +134,44 @@ printf 'Golf: '
 nn=29276
 for bb in {1..10}
 do
-if [[ "${hex:$((nn-4)):1}" == "0" ]]; then
-	printf "x "
-else
-twos ${hex:nn:4};
-fi
-nn=$((nn+8))
+	if [[ "${hex:$((nn-4)):1}" == "0" ]]; then
+		printf "x "
+	else
+		twos ${hex:nn:4};
+	fi
+	nn=$((nn+8))
 done
 printf '\n'
 printf 'Frisbee Golf: '
 z=31340
 for aa in {1..10}
 do
-if [[ "${hex:$((z-4)):1}" == "0" ]]; then
-	printf "x "
-else
-twos ${hex:z:4};
-fi
-z=$((z+8))
+	if [[ "${hex:$((z-4)):1}" == "0" ]]; then
+		printf "x "
+	else
+		twos ${hex:z:4};
+	fi
+	z=$((z+8))
 done
 printf '\n'
 printf 'Cycling: '
 ll=33403
 for z in {1..9}
 do
-c1=${hex:ll:5}
-c1h=$((16#${c1}))
-#Code by Aaron Feleke
-c1s=${c1h:0:3}
-c1ms=${c1h:3:2}
-if [[ "$z" == "7" ]]; then
-printf '\nCycling (3a,3b,6): '
-fi
-if [ "${hex:$((ll-3)):1}" == "0" ]; then
-printf "x, "
-else
-printf '%d %s.%02d, ' 0x${hex:$((ll-2)):2} `secs ${c1s}` ${c1ms} 
-fi
-ll=$((ll+8))
+	c1=${hex:ll:5}
+	c1h=$((16#${c1}))
+	#Code by Aaron Feleke
+	c1s=${c1h:0:3}
+	c1ms=${c1h:3:2}
+	if [[ "$z" == "7" ]]; then
+		printf '\nCycling (3a,3b,6): '
+	fi
+	if [ "${hex:$((ll-3)):1}" == "0" ]; then
+		printf "x, "
+	else
+		printf '%d %s.%02d, ' 0x${hex:$((ll-2)):2} `secs ${c1s}` ${c1ms} 
+	fi
+	ll=$((ll+8))
 done
 echo
 printf 'Skydiving: %d\n' 0x${hex:35468:4}
@@ -250,81 +250,107 @@ offset=0
 echo -e "${RED}Personal ${PURPLE}Records${SET}"
 for i in {1..12}
 do
-i=$((offset+`doc 82c0`))
-name=`hexToAscii2 ${hex:i:30}`
-if [ -z "$name" ]; then
-break
-fi
-echo -e "${GREEN}`hexToAscii2 ${hex:i:30}`${SET}"
+	i=$((offset+`doc 82c0`))
+	name=`hexToAscii2 ${hex:i:30}`
+	if [ -z "$name" ]; then
+		break
+	fi
+	echo -e "${GREEN}`hexToAscii2 ${hex:i:30}`${SET}"
 	i=$((`doc 8a6e`+offset))
-printf 'Power Crusing: %s %s %s %s %s %s\n' `toDec ${hex:i:4} 10` `toDec ${hex:$((i+8)):4} 10` `toDec ${hex:$((i+16)):4} 10` `toDec ${hex:$((i+24)):4} 10` `toDec ${hex:$((i+32)):4} 10` `toDec ${hex:$((i+40)):4} 10`
-i=$((`doc 8a96`+offset))
-printf 'Archery: %d %d %d\n' 0x${hex:i:4} 0x${hex:$((i+8)):4} 0x${hex:$((i+16)):4}
-i=$((`doc 8abe`+offset))
-printf 'Frisbee Dog: %d\n' 0x${hex:i:4}
-i=$((`doc 8ae6`+offset))
-printf '3 Point Contest: %s\n' `toDec ${hex:i:4} 10`
-printf 'Bowling: %d %d %d\n' 0x${hex:$((`doc 8b0e`+offset)):4} 0x${hex:$((`doc 8b36`+offset)):4} 0x${hex:$((`doc 8b5e`+offset)):4}  
-i=$((`doc 8b86`+offset))
-printf 'Canoeing: %s %s %s\n' `toDec2 ${hex:i:4} 100` `toDec2 ${hex:$((i+8)):4} 100` `toDec2 ${hex:$((i+16)):4} 100` 
-printf 'Canoeing Target Distance: %s %s %s\n' `toDec2 ${hex:$((i+24)):4} 100` `toDec2 ${hex:$((i+32)):4} 100` `toDec2 ${hex:$((i+40)):4} 100`
-printf 'Return Table Tennis: %d\n' 0x${hex:$((offset+`doc 8bae`)):4}
-i=$((`doc 8bd6`+offset))
-printf 'Wakeboarding: %d %d %d\n' 0x${hex:i:4} 0x${hex:$((i+8)):4} 0x${hex:$((i+16)):4}
-printf 'Golf: '
-nn=$((`doc 8c26`+offset))
-for bb in {1..10}
-do
-if [[ "${hex:$((nn-4)):1}" == "0" ]]; then
-	printf "x "
-else
-twos ${hex:nn:4};
-fi
-nn=$((nn+8))
-done
-printf '\n'
-printf 'Frisbee Golf: '
-z=$((`doc 8c4e`+offset))
-for aa in {1..10}
-do
-if [[ "${hex:$((z-4)):1}" == "0" ]]; then
-	printf "x "
-else
-twos ${hex:z:4};
-fi
-z=$((z+8))
-done
-printf '\n'
-printf 'Cycling: '
-ll=$((`doc 8c75`+offset))
-ll=$((ll+1))
-for z in {1..9}
-do
-c1=${hex:ll:5}
-c1h=$((16#${c1}))
-c1s=${c1h:0:3}
-c1ms=${c1h:3:2}
-if [[ "$z" == "7" ]]; then
-printf '\nCycling (3a,3b,6): '
-fi
-if [ "${hex:$((ll-3)):1}" == "0" ]; then
-printf "x, "
-else
-printf '%d %s.%02d, ' 0x${hex:$((ll-2)):2} `secs ${c1s}` ${c1ms} 
-fi
-ll=$((ll+8))
-done
-echo
-i=$((`doc 8c9e`+offset))
-printf 'Skydiving: %d\n' 0x${hex:i:4}
-printf 'Island Flyover in 5 minutes (iPoints, Baloons): %d %d\n' 0x${hex:$((offset+`doc 8bfe`)):4} 0x${hex:$((offset+`doc 8c02`)):4}
-a=`doc 8f88`
-b=`doc 8fc8`
-c=`doc 9008`
-printf 'Island Flyover White Baloons (Day, Evening, Night) %s/372 %s/340 %s/209\n' `hexToBinToCount ${hex:$((offset+${a})):94}` `hexToBinToCount ${hex:$((offset+${b})):86}` `hexToBinToCount ${hex:$((offset+${c})):54}`
+	printf 'Power Crusing: %s %s %s %s %s %s\n' `toDec ${hex:i:4} 10` `toDec ${hex:$((i+8)):4} 10` `toDec ${hex:$((i+16)):4} 10` `toDec ${hex:$((i+24)):4} 10` `toDec ${hex:$((i+32)):4} 10` `toDec ${hex:$((i+40)):4} 10`
+	i=$((`doc 8a96`+offset))
+	printf 'Archery: %d %d %d\n' 0x${hex:i:4} 0x${hex:$((i+8)):4} 0x${hex:$((i+16)):4}
+	i=$((`doc 8abe`+offset))
+	printf 'Frisbee Dog: %d\n' 0x${hex:i:4}
+	i=$((`doc 8ae6`+offset))
+	printf '3 Point Contest: %s\n' `toDec ${hex:i:4} 10`
+	printf 'Bowling: %d %d %d\n' 0x${hex:$((`doc 8b0e`+offset)):4} 0x${hex:$((`doc 8b36`+offset)):4} 0x${hex:$((`doc 8b5e`+offset)):4}  
+	i=$((`doc 8b86`+offset))
+	printf 'Canoeing: %s %s %s\n' `toDec2 ${hex:i:4} 100` `toDec2 ${hex:$((i+8)):4} 100` `toDec2 ${hex:$((i+16)):4} 100` 
+	printf 'Canoeing Target Distance: %s %s %s\n' `toDec2 ${hex:$((i+24)):4} 100` `toDec2 ${hex:$((i+32)):4} 100` `toDec2 ${hex:$((i+40)):4} 100`
+	printf 'Return Table Tennis: %d\n' 0x${hex:$((offset+`doc 8bae`)):4}
+	i=$((`doc 8bd6`+offset))
+	printf 'Wakeboarding: %d %d %d\n' 0x${hex:i:4} 0x${hex:$((i+8)):4} 0x${hex:$((i+16)):4}
+	printf 'Golf: '
+	nn=$((`doc 8c26`+offset))
+	for bb in {1..10}
+	do
+		if [[ "${hex:$((nn-4)):1}" == "0" ]]; then
+			printf "x "
+		else
+			twos ${hex:nn:4};
+		fi
+		nn=$((nn+8))
+	done
+	printf '\n'
+	printf 'Frisbee Golf: '
+	z=$((`doc 8c4e`+offset))
+	for aa in {1..10}
+	do
+		if [[ "${hex:$((z-4)):1}" == "0" ]]; then
+			printf "x "
+		else
+			twos ${hex:z:4};
+		fi
+		z=$((z+8))
+	done
+	printf '\n'
+	printf 'Cycling: '
+	ll=$((`doc 8c75`+offset))
+	ll=$((ll+1))
+	for z in {1..9}
+	do
+		c1=${hex:ll:5}
+		c1h=$((16#${c1}))
+		c1s=${c1h:0:3}
+		c1ms=${c1h:3:2}
+		if [[ "$z" == "7" ]]; then
+			printf '\nCycling (3a,3b,6): '
+		fi
+		if [ "${hex:$((ll-3)):1}" == "0" ]; then
+			printf "x, "
+		else
+			printf '%d %s.%02d, ' 0x${hex:$((ll-2)):2} `secs ${c1s}` ${c1ms} 
+		fi
+		ll=$((ll+8))
+	done
+	echo
+	i=$((`doc 8c9e`+offset))
+	printf 'Skydiving: %d\n' 0x${hex:i:4}
+	printf 'Island Flyover in 5 minutes (I-Points, Baloons): %d %d\n' 0x${hex:$((offset+`doc 8bfe`)):4} 0x${hex:$((offset+`doc 8c02`)):4}
+	a=`doc 8f88`
+	b=`doc 8fc8`
+	c=`doc 9008`
+	printf 'Island Flyover White Baloons (Day, Evening, Night) %s/372 %s/340 %s/209\n' `hexToBinToCount ${hex:$((offset+${a})):94}` `hexToBinToCount ${hex:$((offset+${b})):86}` `hexToBinToCount ${hex:$((offset+${c})):54}`
 
+	POINTS=${hex:$((offset+`doc 8f38`)):160}
+	total=$((0))
+	day=$((0))
+	evening=$((0))
+	night=$((0))
 
-interval=`doc df4`
-offset=$((offset+interval))
-echo
+	for (( i=0; i<${#POINTS}; i++ )); do
+		point=${POINTS:$i:1}
+		if [ $((point)) -gt 0 ]; then
+			total=$((total+1))
+		fi
+		if [ $((point)) -ge 4 ]; then
+			night=$((night+1))
+			point=$((point-4))
+		fi
+		if [ $((point)) -ge 2 ]; then
+			evening=$((evening+1))
+			point=$((point-2))
+		fi
+		if [ $((point)) -ge 1 ]; then
+			day=$((day+1))
+			point=$((point-1))
+		fi
+	done
+
+	printf "Island Flyover I-Points (Total, Day, Evening, Night) %d %d %d %d\n" $total $day $evening $night
+
+	interval=`doc df4`
+	offset=$((offset+interval))
+	echo
 done

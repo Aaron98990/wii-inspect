@@ -253,16 +253,21 @@ echo $countStamps "/100" "Stamps total for above player"
 countStamps=0
 
 
-echo
-echo -e "${GREEN}Recent Skill Levels${SET} - In beta. Report errors using GitHub Issues on Aaron98990/wii-inspect"
-x=`doc 8629`
-x=$((x+1+offset))
-printf "3 Point Contest: "
-	for i in {1..25}
-	do		
-printf "%s " `hexToDec ${hex:x:3}`
-		x=$((x+6))
-done
+#echo
+#echo -e "${GREEN}Recent Skill Levels${SET} - In beta. Report errors using GitHub Issues on Aaron98990/wii-inspect"
+#x=`doc 8649`
+#x=$((x+offset))
+#printf "3 Point Contest: "
+#	for i in {1..15}
+#	do		
+#printf "%s " ${hex:x:3}
+#		x=$((x+6))
+#done
+
+
+
+#	printf "Count Sbowl %s Skydive %s BB 3 Con %s Island Fly %s" ${hex:$((offset+`doc 4d7e`)):4} ${hex:$((offset+`doc 4db6`)):4} ${hex:$((offset+`doc 4dda`)):4} ${hex:$((offset+`doc 4e02`)):4}
+
 
 interval=`doc df4`
 offset=$((offset+interval))
