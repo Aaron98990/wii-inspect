@@ -99,7 +99,7 @@ sportin="Swordplay"
 elif [ "${hex:y:4}" == "0002" ]; then
 sportin="Archery"
 elif [ "${hex:y:4}" == "0003" ]; then
-sportin="Look at your wii and open an issue with the correct sport. Thanks for your help!"
+sportin="Frisbee Dog"
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0002" ]; then
 	sportin="3 Point Contest"
 elif [ "${hex:y:4}" == "0004" ]; then
@@ -131,9 +131,9 @@ elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0001" ]; then
 elif [ "${hex:y:4}" == "000d" ]; then
 	sportin="Air Sports"
 elif [ "${hex:y:4}" == "000e" ]; then
-sportin="???"
+sportin="000e Please look at your wii, identify the sport, and open an issue on GitHub."
 elif [ "${hex:y:4}" == "000f" ]; then
-sportin="???"
+sportin="000f Please look at your wii, identify the sport, and open an issue on GitHub."
 fi
 
 printf "%s %s %s " `hexToDate $min` " " "$readable" `hexToAscii ${hex:name_dec_pos:20}` $sportin

@@ -70,7 +70,11 @@ hexToAscii4() {
 	x+=$(echo ${input:26:2} | xxd -r -p)
 	x+=$(echo ${input:30:2} | xxd -r -p)
 	x+=$(echo ${input:34:2} | xxd -r -p)
-	echo $x
+		if [ "${x}" == "" ]; then
+			echo "x"
+		else
+			echo $x
+		fi
 }
 hexToAscii2() { 
 	input=$1
