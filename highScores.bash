@@ -47,29 +47,31 @@ doc() { x=$((16#$1)); printf "%d" $(($x*2));}
 hexToAscii() { 
 	input=$1
 	x=""
-	x+=$(echo ${input:2:2} | xxd -r -p)
-	x+=$(echo ${input:6:2} | xxd -r -p)
-	x+=$(echo ${input:10:2} | xxd -r -p)
-	x+=$(echo ${input:14:2} | xxd -r -p)
-	x+=$(echo ${input:18:2} | xxd -r -p)
-	x+=$(echo ${input:22:2} | xxd -r -p)
-	x+=$(echo ${input:26:2} | xxd -r -p)
-	x+=$(echo ${input:30:2} | xxd -r -p)
-	x+=$(echo ${input:34:2} | xxd -r -p)
+	for i in 2 6 10 14 18 22 26 30 34
+	do
+		if [ "${input:$i:2}" == "20" ]; then
+			x+=" "
+		elif [ "${input:$i:2}" == "00" ]; then
+			x+=""
+		else
+			x+=$(echo ${input:$i:2} | xxd -r -p)
+		fi
+	done
 	names+=($x)
 }
 hexToAscii4() { 
 	input=$1
 	x=""
-	x+=$(echo ${input:2:2} | xxd -r -p)
-	x+=$(echo ${input:6:2} | xxd -r -p)
-	x+=$(echo ${input:10:2} | xxd -r -p)
-	x+=$(echo ${input:14:2} | xxd -r -p)
-	x+=$(echo ${input:18:2} | xxd -r -p)
-	x+=$(echo ${input:22:2} | xxd -r -p)
-	x+=$(echo ${input:26:2} | xxd -r -p)
-	x+=$(echo ${input:30:2} | xxd -r -p)
-	x+=$(echo ${input:34:2} | xxd -r -p)
+	for i in 2 6 10 14 18 22 26 30 34
+	do
+		if [ "${input:$i:2}" == "20" ]; then
+			x+=" "
+		elif [ "${input:$i:2}" == "00" ]; then
+			x+=""
+		else
+			x+=$(echo ${input:$i:2} | xxd -r -p)
+		fi
+	done
 		if [ "${x}" == "" ]; then
 			echo "x"
 		else
@@ -109,8 +111,7 @@ hexToBinToCount() {
 	echo ${z}
 }
 
-# Missing about 5 positions for most high scores
-declare -a startOfNames=(`doc ffe` `doc 1014` `doc 102a` `doc 1040` `doc 1056` `doc 106c` `doc 1406` `doc 141c` `doc 1432` `doc 180e` `doc 1c16` `doc 201e` `doc 2426` `doc 282e` `doc 2c36` `doc 2c4c` `doc 2c62` `doc 303e` `doc 3446` `doc 345c` `doc 3472` `doc 3c40` `doc 3c56` `doc 3c6c` `doc 3c82` `doc 3c98` `doc 3cae` `doc 3cc4` `doc 3cda` `doc 3d1c` `doc 4048` `doc 408a` `doc 40b6` `doc 40cc` `doc 40e2` `doc 4124` `doc 4466` `doc 447c` `doc 4492` `doc 4492` `doc 44a8` `doc 44be` `doc 44ea` `doc 4500` `doc 4516` `doc 486e`)
+declare -a startOfNames=(`doc ffe` `doc 1014` `doc 102a` `doc 1040` `doc 1056` `doc 106c` `doc 1406` `doc 141c` `doc 1432` `doc 180e` `doc 1c16` `doc 201e` `doc 2426` `doc 282e` `doc 2c36` `doc 2c4c` `doc 2c62` `doc 303e` `doc 3446` `doc 345c` `doc 3472` `doc 3c40` `doc 3c56` `doc 3c6c` `doc 3c82` `doc 3c98` `doc 3cae` `doc 3cc4` `doc 3cda` `doc 3d1c` `doc 4048` `doc 4074` `doc 40a0` `doc 408a` `doc 40b6` `doc 40cc` `doc 40f8` `doc 410e` `doc 40e2` `doc 4124` `doc 4466` `doc 447c` `doc 4492` `doc 4492` `doc 44a8` `doc 44be` `doc 44d4` `doc 44ea` `doc 4500` `doc 4516` `doc 486e`)
 
 
 
@@ -224,11 +225,15 @@ b=`doc 3cda`
 c=`doc 3d1c`
 printf 'Golf (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
 a=`doc 4048`
+b=`doc 4074`
 c=`doc 408a`
+d=`doc 40a0`
 e=`doc 40b6`
 f=`doc 40cc`
 g=`doc 40e2`
 printf 'Frisbee Golf: %s %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}` `hexToAscii4 ${hex:${g}:20}`
+a=`doc 40f8`
+b=`doc 410e`
 c=`doc 4124`
 printf 'Frisbee Golf (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
 a=`doc 4466`
@@ -236,11 +241,12 @@ b=`doc 447c`
 c=`doc 4492`
 d=`doc 44a8`
 e=`doc 44be`
-f=`doc 44ea`
+f=`doc 44d4`
+
 printf 'Cycling: %s %s %s %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}` `hexToAscii4 ${hex:${d}:20}` `hexToAscii4 ${hex:${e}:20}` `hexToAscii4 ${hex:${f}:20}`
-a=`doc 4500`
-b=`doc 4516`
-c=`doc 486e`
+a=`doc 44ea`
+b=`doc 4500`
+c=`doc 4516`
 printf 'Cycling (3a,3b,6): %s %s %s\n' `hexToAscii4 ${hex:${a}:20}` `hexToAscii4 ${hex:${b}:20}` `hexToAscii4 ${hex:${c}:20}`
 a=`doc 486e`
 printf 'Skydiving: %s\n' `hexToAscii4 ${hex:${a}:20}`
