@@ -48,14 +48,14 @@ Using wii-inspect
 ## Extra Information
 
 In the Future?
-- View high scores on a per-player bases. I know where it is on the data/game file, I just have not "coded" it.
-- Extend stamps to more than three players. Don't show stamps screen for no/empty player.
-- Improve formatting and use more for loops. Hard to use for loops, especially when lots of switching between hexadecimal, binary, and decimal.
+- ~~View high scores on a per-player bases. I know where it is on the data/game file, I just have not "coded" it.~~
+- ~~Extend stamps to more than three players. Don't show stamps screen for no/empty player.~~
+- ~~Improve formatting and use more for loops. Hard to use for loops, especially when lots of switching between hexadecimal, binary, and decimal.~~
 - Paper or Documentation with analysis of offsets of save data
 - In Return Table Tennis, the score freezes at 999 but the game continues. I am curious if the save data continues. 
 - Investigating the recommendation system for Wii Sports Resort. I suspect there is a place to keep track of the number of games played but still testing. Note: playing the game once does not necesairly change the recommended game even after restarting.
 - Level (0 - 2500) and accomplishments (Superstar or Pro) for games have not been found but I suspect a place.
-- Island Flyover Statistics including iPoints, balloons, 8 unlockable achievments, and balloons/iPoints in 5 minutes record.
+- ~~Island Flyover Statistics including iPoints, balloons, 8 unlockable achievments, and balloons/iPoints in 5 minutes record.~~
 - Include the **Superstar Score** - the score of a game where a player starts and ends at or as close as possible to Skill Level 2000.
 
 Branches
