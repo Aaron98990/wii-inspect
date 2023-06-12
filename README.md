@@ -13,7 +13,7 @@ Prequisite Hadware/Software
 - gcc, xxd, git
 
 About
-- Retrieve high scores, dates of recieved stamps, and the last 25 plays from the save file for Wii Sports Resort.
+- Retrieve high scores, dates of received stamps, and the last 25 plays from the save file for Wii Sports Resort.
 
 <img src="https://user-images.githubusercontent.com/45950113/132385115-596b0a18-a88f-4928-987c-d44c3d0fc1d4.png" width="700">
 <img src="https://user-images.githubusercontent.com/45950113/132387567-c2bd82f4-63eb-45e0-9eaa-1eec0cc06c0d.png" width="500">
