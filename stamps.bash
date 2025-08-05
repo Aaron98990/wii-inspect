@@ -106,15 +106,15 @@ sportin="Power Cruising - Shoals"
 elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0006" ]; then
 sportin="Power Cruising 6"
 elif [ "${hex:y:4}" == "0001" ]; then
-sportin="Power Cruising"
+sportin="Power Cruising ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0000" ] && [ "${hex:z:4}" == "0005" ]; then
-sportin="Swordplay Duel`echo ${hex:a:4} ${hex:z:4}`"
+sportin="Swordplay Duel"
 elif [ "${hex:y:4}" == "0000" ] && [ "${hex:z:4}" == "0006" ]; then
-sportin="Speed Slice `echo ${hex:a:4} ${hex:z:4}`"
+sportin="Speed Slice"
 elif [ "${hex:y:4}" == "0000" ]; then
 	sportin="Swordplay Showdown Stage 1+`hexToDec ${hex:a:4}`"
 elif [ "${hex:y:4}" == "0000" ]; then
-sportin="Swordplay"
+sportin="Swordplay ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0000" ]; then
 sportin="Archery - Beginner"
 elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0001" ]; then
@@ -125,7 +125,7 @@ elif [ "${hex:y:4}" == "0002" ]; then
 sportin="Archery"
 elif [ "${hex:y:4}" == "0003" ]; then
 sportin="Frisbee Dog"
-elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0002" ]; then
+elif [ "${hex:y:4}" == "0004" ] && [ "${hex:z:4}" == "0002" ]; then
 	sportin="3 Point Contest"
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0004" ]; then
 	sportin="Basketball 4"
@@ -134,7 +134,7 @@ elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0000" ]; then
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0001" ]; then
 	sportin="Basketball 1"
 elif [ "${hex:y:4}" == "0004" ]; then
-sportin="Basketball"
+sportin="Basketball ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0002" ]; then
 	sportin="Standard Bowling"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0004" ]; then
@@ -144,7 +144,7 @@ elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0006" ]; then
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0000" ]; then
 	sportin="Bowling 0"
 elif [ "${hex:y:4}" == "0005" ]; then
-	sportin="Bowling"
+	sportin="Bowling ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0000" ]; then
 sportin="Canoeing - Beginner"
 elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0001" ]; then
@@ -153,12 +153,12 @@ elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0002" ]; then
 sportin="Canoeing - Expert"
 elif [ "${hex:y:4}" == "0006" ]; then
 sportin="Canoeing"
-elif [ "${hex:y:4}" == "0007" ] && [ "${hex:a:4}" == "0000" ] ; then
-sportin="Table Tennis 0"
-elif [ "${hex:y:4}" == "0007" ] && [ "${hex:a:4}" == "0001" ] ; then
-sportin="Table Tennis 1"
+elif [ "${hex:y:4}" == "0007" ] && [ "${hex:z:4}" == "0005" ] ; then
+sportin="Table Tennis Match"
+elif [ "${hex:y:4}" == "0007" ] && [ "${hex:z:4}" == "0006" ] ; then
+sportin="Return Table Tennis"
 elif [ "${hex:y:4}" == "0007" ]; then
-sportin="Table Tennis"
+sportin="Table Tennis ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0000" ]; then
 sportin="Wakeboarding - Beginner"
 elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0001" ]; then
@@ -214,7 +214,7 @@ sportin="Frisbee Golf 18 holes"
 elif [ "${hex:y:4}" == "000b" ]; then
 sportin="Frisbee Golf"
 elif [ "${hex:y:4}" == "000c" ]; then
-sportin="Cycling"
+sportin="Cycling ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0000" ]; then
 	sportin="Air Sports 0"
 elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0002" ]; then
@@ -222,7 +222,7 @@ elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0002" ]; then
 elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0001" ]; then
 	sportin="Skydiving"
 elif [ "${hex:y:4}" == "000d" ]; then
-	sportin="Air Sports"
+	sportin="Air Sports ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "000e" ]; then
 sportin="000e Please look at your wii, identify the sport, and open an issue on GitHub."
 elif [ "${hex:y:4}" == "000f" ]; then
@@ -324,7 +324,7 @@ echo -e "${RED}${name}${SET}"
 sport "Swordplay Showdown " "8cec"
 sport "Swordplay Duel     " "8d00"
 sport "Speed Slice        " "8d14"
-sport "Power Crusing      " "8d28"
+sport "Power Cruising     " "8d28"
 sport "Archery            " "8d50"
 sport "Frisbee Dog        " "8d64"
 sport "3 Point Contest    " "8d78"
@@ -369,7 +369,7 @@ done
 # For more players, get the last player and add 0xDE4 to all values.
 
 # 25 Records of Recent history
-echo -e "${GREEN}Recent Activity${SET} - Instead of clicking A & B to start game, just wait to see activity or use the + or - button the Wiimote."
+echo -e "${GREEN}Recent Activity${SET} - Instead of clicking A & B to start game, just wait to see activity or use the + or - button on the Wiimote."
 OneDate "4e34"
 OneDate "4ffc"
 OneDate "51c4"
