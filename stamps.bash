@@ -107,6 +107,12 @@ elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0006" ]; then
 sportin="Power Cruising 6"
 elif [ "${hex:y:4}" == "0001" ]; then
 sportin="Power Cruising"
+elif [ "${hex:y:4}" == "0000" ] && [ "${hex:z:4}" == "0005" ]; then
+sportin="Swordplay Duel`echo ${hex:a:4} ${hex:z:4}`"
+elif [ "${hex:y:4}" == "0000" ] && [ "${hex:z:4}" == "0006" ]; then
+sportin="Speed Slice `echo ${hex:a:4} ${hex:z:4}`"
+elif [ "${hex:y:4}" == "0000" ]; then
+	sportin="Swordplay Showdown Stage 1+`hexToDec ${hex:a:4}`"
 elif [ "${hex:y:4}" == "0000" ]; then
 sportin="Swordplay"
 elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0000" ]; then
@@ -125,6 +131,8 @@ elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0004" ]; then
 	sportin="Basketball 4"
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0000" ]; then
 	sportin="Basketball 0"
+elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0001" ]; then
+	sportin="Basketball 1"
 elif [ "${hex:y:4}" == "0004" ]; then
 sportin="Basketball"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0002" ]; then
@@ -145,6 +153,10 @@ elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0002" ]; then
 sportin="Canoeing - Expert"
 elif [ "${hex:y:4}" == "0006" ]; then
 sportin="Canoeing"
+elif [ "${hex:y:4}" == "0007" ] && [ "${hex:a:4}" == "0000" ] ; then
+sportin="Table Tennis 0"
+elif [ "${hex:y:4}" == "0007" ] && [ "${hex:a:4}" == "0001" ] ; then
+sportin="Table Tennis 1"
 elif [ "${hex:y:4}" == "0007" ]; then
 sportin="Table Tennis"
 elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0000" ]; then
@@ -309,7 +321,7 @@ do
 		break
 	fi  
 echo -e "${RED}${name}${SET}"
-sport "Showdown           " "8cec"
+sport "Swordplay Showdown " "8cec"
 sport "Swordplay Duel     " "8d00"
 sport "Speed Slice        " "8d14"
 sport "Power Crusing      " "8d28"
