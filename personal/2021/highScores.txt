@@ -1,0 +1,115 @@
+ok: 1
+[0;31mWii [0;34mSports [0;35mResort [0;32mRecords[0m
+[0;32mWii Records[0m
+Power Crusing: 206.3 171.5 174.6 173.5 176.4 190.4
+Archery: 111 100 77
+Frisbee Dog: 1150
+3 Point Contest: 27.0
+Bowling: 198 2298 229
+Canoeing: 247.49 265.00 327.68
+Return Ping Pong: 328
+Wakeboarding: 2317 1350 1088
+Golf: -3 +0 +4 +0 -2 +4 +3 x x -1 
+Frisbee Golf: -1 x -2 x -3 -2 -1 x x +6 
+Cycling: 1 2:27.63, 1 2:05.28, 1 2:15.05, 1 2:42.50, 1 2:57.26, 1 3:11.16, 
+Cycling (3a,3b,6): 1 6:50.68, 1 8:50.70, 4 15:53.66, 
+Skydiving: 158
+
+[0;32mWii Record Holders[0m
+Power Crusing: Guest Aaron Aaron Aaron Aaron Aaron
+Archery: Aaron Aaron Aaron
+Frisbee Dog: Aaron
+3 Point Contest: Aaron
+Bowling: Aaron Aaron Aaron
+Canoeing: Aaron Aaron Aaron
+Return Ping Pong: Aaron
+Wakeboarding: Aaron Aaron Aaron
+Golf: Aaron Aaron Aaron Aaron Aaron Aaron Aaron
+Golf (3a,3b,6): Aaron Aaron Aaron
+Frisbee Golf: Aaron x Aaron x Aaron Aaron Aaron
+Frisbee Golf (3a,3b,6): x x Aaron
+Cycling: Aaron Aaron Aaron Aaron Aaron Aaron
+Cycling (3a,3b,6): Aaron Aaron Aaron
+Skydiving: Aaron
+
+[0;32mMost Wii Records[0m
+  46 Aaron
+   1 Guest
+
+[0;31mPersonal [0;35mRecords[0m
+[0;32mAaron F[0m
+Power Crusing: 203.8 171.5 174.6 173.5 176.4 190.4
+Archery: 111 100 77
+Frisbee Dog: 1150
+3 Point Contest: 27.0
+Bowling: 198 2298 229
+Canoeing: 247.49 265.00 310.00
+Canoeing Target Distance: 205.00 260.00 315.00
+Return Table Tennis: 328
+Wakeboarding: 2317 1350 1088
+Golf: -3 +0 +4 +0 -2 +4 +3 x x -1 
+Frisbee Golf: -1 x -2 x -3 -2 -1 x x +6 
+Cycling: 1 2:27.63, 1 2:05.28, 1 2:15.05, 1 2:42.50, 1 2:57.26, 1 3:11.16, 
+Cycling (3a,3b,6): 1 6:50.68, 1 8:50.70, 4 15:53.66, 
+Skydiving: 158
+Island Flyover in 5 minutes (I-Points, Baloons): 36 175
+Island Flyover White Baloons (Day, Evening, Night) 372/372 340/340 209/209
+Island Flyover I-Points (Total, Day, Evening, Night) 80 80 80 80
+
+[0;32mMehari[0m
+Power Crusing: 0.0 0.0 0.0 0.0 0.0 0.0
+Archery: 88 86 35
+Frisbee Dog: 0
+3 Point Contest: 24.0
+Bowling: 131 0 0
+Canoeing: 0.00 0.00 0.00
+Canoeing Target Distance: 0.00 0.00 0.00
+Return Table Tennis: 0
+Wakeboarding: 0 0 0
+Golf: x x x x x x x x x x 
+Frisbee Golf: x x x x x x x x x x 
+Cycling: 6 2:37.53, x, x, x, x, x, 
+Cycling (3a,3b,6): x, x, x, 
+Skydiving: 0
+Island Flyover in 5 minutes (I-Points, Baloons): 0 0
+Island Flyover White Baloons (Day, Evening, Night) 0/372 0/340 0/209
+Island Flyover I-Points (Total, Day, Evening, Night) 0 0 0 0
+
+[0;32mSarah s[0m
+Power Crusing: 66.7 94.5 0.0 0.0 0.0 0.0
+Archery: 98 81 33
+Frisbee Dog: 480
+3 Point Contest: 21.0
+Bowling: 0 1877 0
+Canoeing: 145.00 80.37 100.00
+Canoeing Target Distance: 155.00 100.00 120.00
+Return Table Tennis: 94
+Wakeboarding: 1031 374 0
+Golf: x x x x x x x x x x 
+Frisbee Golf: x x x x x x x x x x 
+Cycling: 6 2:46.60, x, 23 2:39.45, x, 9 3:06.05, x, 
+Cycling (3a,3b,6): x, x, x, 
+Skydiving: 90
+Island Flyover in 5 minutes (I-Points, Baloons): 12 50
+Island Flyover White Baloons (Day, Evening, Night) 16/372 1/340 0/209
+Island Flyover I-Points (Total, Day, Evening, Night) 69 67 2 3
+
+[0;32mAlem[0m
+Power Crusing: 0.0 0.0 0.0 0.0 0.0 0.0
+Archery: 0 0 0
+Frisbee Dog: 0
+3 Point Contest: 0.0
+Bowling: 0 0 0
+Canoeing: 0.00 0.00 0.00
+Canoeing Target Distance: 0.00 0.00 0.00
+Return Table Tennis: 0
+Wakeboarding: 0 0 0
+Golf: x x x x x x x x x x 
+Frisbee Golf: x x x x x x x x x x 
+Cycling: x, x, x, x, x, x, 
+Cycling (3a,3b,6): x, x, x, 
+Skydiving: 0
+Island Flyover in 5 minutes (I-Points, Baloons): 0 0
+Island Flyover White Baloons (Day, Evening, Night) 0/372 0/340 0/209
+Island Flyover I-Points (Total, Day, Evening, Night) 0 0 0 0
+
