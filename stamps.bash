@@ -19,6 +19,7 @@ elif [ ! -f "$1" ]; then
 	    echo "$1: No such file"
 	    exit 2
 elif [ "${1: -3}" == "bin" ]; then
+rm -r 00010000525a5445/
 tachtig "$1"
 hex=$(xxd -p -c 1000000 00010000525a5445/Sports2.dat)
 else
@@ -92,40 +93,120 @@ readable=${hex:x:8}
 fi
 if [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0000" ]; then
 sportin="Power Cruising - Beach"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0001" ]; then
+sportin="Power Cruising - Lagoon"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0002" ]; then
+sportin="Power Cruising - Lighthouse"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0003" ]; then
+sportin="Power Cruising - Marina"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0004" ]; then
+sportin="Power Cruising - Cavern"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0005" ]; then
+sportin="Power Cruising - Shoals"
+elif [ "${hex:y:4}" == "0001" ] &&  [ "${hex:a:4}" == "0006" ]; then
+sportin="Power Cruising 6"
 elif [ "${hex:y:4}" == "0001" ]; then
 sportin="Power Cruising"
 elif [ "${hex:y:4}" == "0000" ]; then
 sportin="Swordplay"
+elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0000" ]; then
+sportin="Archery - Beginner"
+elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0001" ]; then
+sportin="Archery - Intermediate"
+elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0002" ]; then
+sportin="Archery - Expert"
 elif [ "${hex:y:4}" == "0002" ]; then
 sportin="Archery"
 elif [ "${hex:y:4}" == "0003" ]; then
 sportin="Frisbee Dog"
 elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0002" ]; then
 	sportin="3 Point Contest"
+elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0004" ]; then
+	sportin="Basketball 4"
+elif [ "${hex:y:4}" == "0004" ] && [ "${hex:a:4}" == "0000" ]; then
+	sportin="Basketball 0"
 elif [ "${hex:y:4}" == "0004" ]; then
 sportin="Basketball"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0002" ]; then
 	sportin="Standard Bowling"
 elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0004" ]; then
 	sportin="Spin Control Bowling"
+elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0006" ]; then
+	sportin="Bowling 6"
+elif [ "${hex:y:4}" == "0005" ] && [ "${hex:z:4}" == "0000" ]; then
+	sportin="Bowling 0"
 elif [ "${hex:y:4}" == "0005" ]; then
 	sportin="Bowling"
+elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0000" ]; then
+sportin="Canoeing - Beginner"
+elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0001" ]; then
+sportin="Canoeing - Intermediate"
+elif [ "${hex:y:4}" == "0006" ] && [ "${hex:a:4}" == "0002" ]; then
+sportin="Canoeing - Expert"
 elif [ "${hex:y:4}" == "0006" ]; then
 sportin="Canoeing"
 elif [ "${hex:y:4}" == "0007" ]; then
 sportin="Table Tennis"
 elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0000" ]; then
 sportin="Wakeboarding - Beginner"
+elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0001" ]; then
+sportin="Wakeboarding - Intermediate"
+elif [ "${hex:y:4}" == "0008" ] && [ "${hex:a:4}" == "0002" ]; then
+sportin="Wakeboarding - Expert"
 elif [ "${hex:y:4}" == "0008" ]; then
 sportin="Wakeboarding"
 elif [ "${hex:y:4}" == "0009" ]; then
 sportin="Island Flyover"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0000" ]; then
+sportin="Golf Resort A"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0001" ]; then
+sportin="Golf Resort B"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0002" ]; then
+sportin="Golf Resort C"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0002" ]; then
+sportin="Golf Classic A"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0004" ]; then
+sportin="Golf Classic B"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0005" ]; then
+sportin="Golf Classic C"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0006" ]; then
+sportin="Golf 3 holes Special"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0007" ]; then
+sportin="Golf 9 holes Resort"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0008" ]; then
+sportin="Golf 9 holes Classic"
+elif [ "${hex:y:4}" == "000a" ] && [ "${hex:a:4}" == "0009" ]; then
+sportin="Golf 18 holes"
 elif [ "${hex:y:4}" == "000a" ]; then
 sportin="Golf"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0000" ]; then
+sportin="Frisbee Golf Resort A"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0001" ]; then
+sportin="Frisbee Golf Resport B"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0002" ]; then
+sportin="Frisbee Golf Resort C"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0003" ]; then
+sportin="Frisbee Golf Classic A"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0004" ]; then
+sportin="Frisbee Golf Classic B"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0005" ]; then
+sportin="Frisbee Golf Classic C"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0006" ]; then
+sportin="Frisbee Golf 3 holes Special"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0007" ]; then
+sportin="Frisbee Golf 9 holes Resort"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0008" ]; then
+sportin="Frisbee Golf 9 holes Classic"
+elif [ "${hex:y:4}" == "000b" ] && [ "${hex:a:4}" == "0009" ]; then
+sportin="Frisbee Golf 18 holes"
 elif [ "${hex:y:4}" == "000b" ]; then
 sportin="Frisbee Golf"
 elif [ "${hex:y:4}" == "000c" ]; then
 sportin="Cycling"
+elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0000" ]; then
+	sportin="Air Sports 0"
+elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0002" ]; then
+	sportin="Air Sports 2"
 elif [ "${hex:y:4}" == "000d" ] && [ "${hex:z:4}" == "0001" ]; then
 	sportin="Skydiving"
 elif [ "${hex:y:4}" == "000d" ]; then
@@ -239,13 +320,13 @@ sport "Pickup Basketball  " "8d8c"
 sport "Standard Bowling   " "8d9c"
 sport "100 Pin Bowling    " "8db4"
 sport "Spin Control       " "8dc8"
-sport "Frisbee Golf       " "8df0"
+sport "Canoeing           " "8df0"
 sport "Return Table Tennis" "8e04"
 sport "Table Tennis Match " "8e18"
 sport "Wakeboarding       " "8e2c"
 sport "Island Flyover     " "8e40"
 sport "Golf               " "8e68"
-sport "Canoeing           " "8e7c"
+sport "Frisbee Golf       " "8e7c"
 sport "Cycling            " "8ea4"
 sport "Skydiving          " "8eb8"
 #Code by Aaron Feleke
@@ -276,7 +357,7 @@ done
 # For more players, get the last player and add 0xDE4 to all values.
 
 # 25 Records of Recent history
-echo -e "${GREEN}25 Recent Plays${SET} - Instead of clicking A & B to start game, just wait to see the plays or use the + or - button the Wiimote."
+echo -e "${GREEN}Recent Activity${SET} - Instead of clicking A & B to start game, just wait to see activity or use the + or - button the Wiimote."
 OneDate "4e34"
 OneDate "4ffc"
 OneDate "51c4"

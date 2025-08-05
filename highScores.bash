@@ -19,6 +19,7 @@ elif [ ! -f "$1" ]; then
 	echo "$1: No such file"
 	exit 2
 elif [ "${1: -3}" == "bin" ]; then
+	rm -r 00010000525a5445/
 	tachtig "$1"
 	hex=$(xxd -p -c 1000000 00010000525a5445/Sports2.dat)
 else
