@@ -282,6 +282,7 @@ do
 	printf 'Return Table Tennis: %d\n' 0x${hex:$((offset+`doc 8bae`)):4}
 	i=$((`doc 8bd6`+offset))
 	printf 'Wakeboarding: %d %d %d\n' 0x${hex:i:4} 0x${hex:$((i+8)):4} 0x${hex:$((i+16)):4}
+
 	printf 'Golf: '
 	nn=$((`doc 8c26`+offset))
 	for bb in {1..10}
@@ -361,7 +362,33 @@ do
 
 	printf "Island Flyover I-Points (Total, Day, Evening, Night) %d %d %d %d\n" $total $day $evening $night
 
+
+
+
+
+
+	for (( h=-15; h<4; h++ )); do
+		i=$((`doc 88cd`+offset))
+		printf "\n%2d: " $h
+		hh=$((i + h *150))
+		for (( g=0; g<25; g++ )); do
+
+			printf '%4d ' 0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2}
+		done
+	done
+
+
+	echo
+	printf 'Skill Level'
+	printf 'Experiment Shift: \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+
+	
 	interval=`doc df4`
 	offset=$((offset+interval))
 	echo
+
+
+
 done
+
+
