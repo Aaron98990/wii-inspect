@@ -365,22 +365,38 @@ do
 
 
 
+	printf 'Experiment Shift: \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
 
+
+	echo
+	printf 'Skill Level\n'
+
+	cc=("Showdown" "Swordplay Duel" "Speed Slice" "Power Cruising" "Archery" "Frisbee Dog" "3 Point Contest" "Pickup Basketball" "Standard Bowling" "100 Pin Bowling" "Spin Control" "Canoeing" "Return Table Tennis" "Table Tennis Match" "Wakeboarding" "Golf" "Frisbee Golf" "Cycling" "Skydiving")
 
 	for (( h=-15; h<4; h++ )); do
 		i=$((`doc 88cd`+offset))
-		printf "\n%2d: " $h
+		printf "\n%20s: " "${cc[$((h+15))]}"
 		hh=$((i + h *150))
 		for (( g=0; g<25; g++ )); do
 
-			printf '%4d ' 0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2}
+			printf ' %4d'  0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2}
 		done
 	done
 
 
 	echo
-	printf 'Skill Level'
-	printf 'Experiment Shift: \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+	echo "Skill Level Experiment - (in parenthesis is experiments)"
+	for (( h=-15; h<4; h++ )); do
+		i=$((`doc 88cd`+offset))
+		printf "\n%20s: " "${cc[$((h+15))]}"
+		hh=$((i + h *150))
+		for (( g=0; g<25; g++ )); do
+
+			printf ' %4d (%2d-%s)'  0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2} 0x${hex:$((hh + g*6 + 2)):2} ${hex:$((hh + g*6 + 2)):3}
+		done
+	done
+
+	printf 'Skill Level Experiment - (in parenenthesis is experiments)\n, : \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
 
 	
 	interval=`doc df4`
