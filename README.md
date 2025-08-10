@@ -24,12 +24,13 @@ My stamps, high scores, and previous data.bin (encrypted save file) and Sports2.
 ## Instructions
 Retrieving Save File
 - For Wii, open the white slot under the reset button and insert an SD Card.
-- From the Home Screen on the Wii, click Wii (bottom left) > Data Managment > Save Data > Wii > Choose Game (Umbrella) > Copy
+- From the Home Screen on the Wii, click Wii (bottom left) > Data Managment > Save Data > Wii > Choose Game (Wii Sports Resort - Umbrella Image) > Copy
 
 **DO NOT click delete. Deleting a save file will reset the game and remove all scores and progress.**
 
-**The save file is stored in: SD://private/wii/title/RZTE/data.bin  If there is a file already there, change the folder or file name on your laptop to allow for a newer save file to be copied.**
+**The save file is stored in: SD://private/wii/title/RZTE/data.bin**  
 
+**If there is a file already there, change/move the folder or file on your laptop to allow for a newer save file to be copied. If not, you will get a warning saying that: This data already exists on the SD Card**
 
 Transferring the Save File
 - Insert the SD Card into a laptop or laptop extension and navigate to the save file at SD://private/wii/title/RZTE/data.bin and move it inside wii-inspect/.
