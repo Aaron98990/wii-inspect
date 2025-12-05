@@ -9,7 +9,7 @@ Prequisite Hadware/Software
 - SD Card
 - Wii that has an SD Card slot - not a Wii Mini
 - Laptop or laptop extension that has an SD Card slot
-- Terminal that runs BASH 5 or later
+- Terminal that runs BASH 3 or later
   - Ideally a Linux or Apple operating system is used. But on Windows, [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) may be needed.
 
 About
@@ -39,8 +39,12 @@ Transferring the Save File
 
 Using wii-inspect:
 - Type in your terminal: ``cd ~`` then ``git clone https://github.com/Aaron98990/wii-inspect`` (could clone anywhere, but for this guide this is what we're assuming)
+- Run ``openssl version`` and ensure that version 3 or higher is in use
+  - To insall on macOS: ``brew install openssl``
+  - To insall on Linux: ``sudo apt-get install openssl`` (or equivalent for your distro)
 - The repository for https://github.com/Plombo/segher-wii-tools which contains tachtig is in the segher-wii-tools folder with a small modificiation in the Makefile for faster setup.
 - Type in your terminal: `cd ~/wii-inspect/segher-wii-tools`, then type ``make all``. If there are errors, type `make clean` then `make all`.
+  - If openssl is not being auto-detected, uncomment and modify ``OPENSSL_PREFIX`` in Makefile to fix.
 - Type``chmod +x tachtig`` to create an executable file
 - Copy the tachtig file to a location in your $PATH with ``sudo cp tachtig /usr/local/bin`` **You must do this**
 - In the terminal, ``cd ~/wii-inspect`` then type ``bash stamps.bash data.bin`` and ``bash highScores.bash data.bin``

@@ -1,5 +1,33 @@
 #!/bin/bash                                                       
 
+# Check bash version (requires 3.0 or higher)
+BASH_VERSION_MAJOR=$(echo $BASH_VERSION | cut -d. -f1)
+if [ "$BASH_VERSION_MAJOR" -lt 3 ]; then
+    echo "Error: This script requires bash version 3.0 or higher"
+    echo "Current bash version: $BASH_VERSION"
+    echo "Please upgrade bash:"
+    echo "  macOS: brew install bash"
+    echo "  Linux: Usually already version 4+ by default"
+    exit 1
+fi
+
+# Check if OpenSSL is available
+if ! command -v openssl &> /dev/null; then
+    echo "Error: OpenSSL not found in PATH"
+    echo "Please install OpenSSL:"
+    echo "  macOS: brew install openssl"
+    echo "  Linux: sudo apt-get install openssl (or equivalent for your distro)"
+    exit 1
+fi
+
+# Check if tachtig is available
+if ! command -v tachtig &> /dev/null; then
+    echo "Error: tachtig not found in PATH"
+    echo "Please build and install tachtig from the segher-wii-tools directory"
+    echo "Run: cd segher-wii-tools && make all && sudo cp tachtig /usr/local/bin"
+    exit 1
+fi
+
 # Allow tactig ussage
 mkdir -p ~/.wii
 echo "ab01b9d8e1622b08afbad84dbfc2a55d" > ~/.wii/sd-key
@@ -95,7 +123,7 @@ hexToAscii2() {
 	echo $x
 }
 toUpper() {
-	echo ${1^^}
+	echo "$1" | tr '[:lower:]' '[:upper:]'
 }
 hexToBin() {
 	x=`toUpper $1`
