@@ -140,7 +140,7 @@ sportin="Swordplay Duel"
 elif [ "${hex:y:4}" == "0000" ] && [ "${hex:z:4}" == "0006" ]; then
 sportin="Speed Slice"
 elif [ "${hex:y:4}" == "0000" ]; then
-	sportin="Swordplay Showdown Stage 1+`hexToDec ${hex:a:4}`"
+	sportin="Swordplay Showdown Stage $((1+`hexToDec ${hex:a:4}`))"
 elif [ "${hex:y:4}" == "0000" ]; then
 sportin="Swordplay ${hex:a:4} ${hex:z:4}"
 elif [ "${hex:y:4}" == "0002" ]&&  [ "${hex:a:4}" == "0000" ]; then
