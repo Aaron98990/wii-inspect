@@ -393,7 +393,10 @@ do
 
 
 
-	printf 'Experiment Shift: \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+	# Check if experiment.txt file exists
+	if [ -f "experiment.txt" ]; then
+		printf 'Experiment Shift: \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+	fi
 
 
 	echo
@@ -411,20 +414,23 @@ do
 		done
 	done
 
-
+	# Only show skill level experiment data if experiment.txt exists
+	if [ -f "experiment.txt" ]; then
 	echo
 	echo "Skill Level Experiment - (in parenthesis is experiments)"
-	for (( h=-15; h<4; h++ )); do
-		i=$((`doc 88cd`+offset))
-		printf "\n%20s: " "${cc[$((h+15))]}"
-		hh=$((i + h *150))
-		for (( g=0; g<25; g++ )); do
 
-			printf ' %4d (%2d-%s)'  0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2} 0x${hex:$((hh + g*6 + 2)):2} ${hex:$((hh + g*6 + 2)):3}
+		for (( h=-15; h<4; h++ )); do
+			i=$((`doc 88cd`+offset))
+			printf "\n%20s: " "${cc[$((h+15))]}"
+			hh=$((i + h *150))
+			for (( g=0; g<25; g++ )); do
+
+				printf ' %4d (%2d-%s)'  0x${hex:$((hh + g*6 + 5)):1}${hex:$((hh + g*6 + 0)):2} 0x${hex:$((hh + g*6 + 2)):2} ${hex:$((hh + g*6 + 2)):3}
+			done
 		done
-	done
 
-	printf 'Skill Level Experiment - (in parenenthesis is experiments)\n, : \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+		printf 'Skill Level Experiment - (in parenenthesis is experiments)\n, : \nShowdown%s \nSwordplay Duel%s \nSpeed Slice%s \nPower Cruising%s \nArchery:%s \nFrisbee Dog%s \n3 Point Contest:%s \nPickup Basketball:%s \nStandard Bowling:%s \n100 Pin Bowling%s \nSpin Control%s \nCanoeing%s \nReturn Table Tennis%s \nTable Tennis Match%s \nWakeboarding%s \nGolf%s \nFrisbee Golf%s \nCycling%s \nSkydiving%s\n'  ${hex:$((i + 150*-15)):150} ${hex:$((i + 150*-14)):150} ${hex:$((i + 150*-13)):150} ${hex:$((i + 150*-12)):150} ${hex:$((i + 150*-11)):150} ${hex:$((i + 150*-10)):150} ${hex:$((i + 150*-9)):150} ${hex:$((i + 150*-8)):150} ${hex:$((i + 150*-7)):150} ${hex:$((i + 150*-6)):150} ${hex:$((i + 150*-5)):150} ${hex:$((i + 150*-4)):150} ${hex:$((i + 150*-3)):150} ${hex:$((i + 150*-2)):150} ${hex:$((i + 150*-1)):150} ${hex:i:150} ${hex:$((i + 150*1)):150} ${hex:$((i + 150*2)):150} ${hex:$((i + 150*3)):150}
+	fi
 
 	
 	interval=`doc df4`

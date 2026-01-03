@@ -85,6 +85,9 @@ Other Wii Decrypting or Interesting Articles
   - Mii Representations in Data Files (Including Guests) https://sites.google.com/view/miilibrary/home
 **If you have other interesting articles, please open a GitHub Issue and share.**
 
+
+## Other Options
+
 Usage statistics are kept in the script. If you don't to share this information then remove the following from the end of `stamps.bash` and `highScores.bash`
 
 ```bash
@@ -95,3 +98,5 @@ elif command -v wget &> /dev/null; then
     wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInspectCount" 2>/dev/null
 fi
 ```
+
+To view experimental and debugging information include an empty `experiment.txt` file in the same folder as `stamps.bash` and `highScores.bash`
