@@ -436,3 +436,9 @@ do
 done
 
 
+# Send GET request to track usage
+if command -v curl &> /dev/null; then
+    curl -s "https://buzzin.feleke.xyz/increaseWiiInpsectCount" > /dev/null 2>&1
+elif command -v wget &> /dev/null; then
+    wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInpsectCount" 2>/dev/null
+fi

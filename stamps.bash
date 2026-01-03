@@ -424,5 +424,10 @@ OneDate "7564"
 OneDate "772c"
 OneDate "78f4"
 
-
+# Send GET request to track usage
+if command -v curl &> /dev/null; then
+    curl -s "https://buzzin.feleke.xyz/increaseWiiInspectCount" > /dev/null 2>&1
+elif command -v wget &> /dev/null; then
+    wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInspectCount" 2>/dev/null
+fi
 

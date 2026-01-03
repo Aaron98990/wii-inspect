@@ -84,3 +84,14 @@ Other Wii Decrypting or Interesting Articles
 - Miis
   - Mii Representations in Data Files (Including Guests) https://sites.google.com/view/miilibrary/home
 **If you have other interesting articles, please open a GitHub Issue and share.**
+
+Usage statistics are kept in the script. If you don't to share this information then remove the following from the end of `stamps.bash` and `highScores.bash`
+
+```bash
+# Send GET request to track usage
+if command -v curl &> /dev/null; then
+    curl -s "https://buzzin.feleke.xyz/increaseWiiInpsectCount" > /dev/null 2>&1
+elif command -v wget &> /dev/null; then
+    wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInpsectCount" 2>/dev/null
+fi
+```
