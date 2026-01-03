@@ -90,8 +90,8 @@ Usage statistics are kept in the script. If you don't to share this information 
 ```bash
 # Send GET request to track usage
 if command -v curl &> /dev/null; then
-    curl -s "https://buzzin.feleke.xyz/increaseWiiInpsectCount" > /dev/null 2>&1
+    curl -s "https://buzzin.feleke.xyz/increaseWiiInspectCount" > /dev/null 2>&1
 elif command -v wget &> /dev/null; then
-    wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInpsectCount" 2>/dev/null
+    wget -q -O /dev/null "https://buzzin.feleke.xyz/increaseWiiInspectCount" 2>/dev/null
 fi
 ```
